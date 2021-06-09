@@ -24,8 +24,9 @@ username: 18212163  pass: COFA000817
     <td align="center"><a href="https://github.com/DictaVizor"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Victor Diaz</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/ArzolaG"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Luis Arzola</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/JaibaSuprema"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Adrian Cortez</b></sub></a><br /></td>
+        <td align="center"><a href="https://github.com/MGKriss022"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Cristian Melendez</b></sub></a><br /></td>
+        <td align="center"><a href="https://github.com/Armenta99"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Francisco Armenta</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/oscarrojas18"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Oscar Rojas</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/EmmanuelARodriguez"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Emmanuel Rodriguez</b></sub></a><br /></td>
-        <td align="center"><a href="https://github.com/Armenta99"><img src="https://avatars.githubusercontent.com/u/85518500?v=4" width="100px;" alt=""/><br /><sub><b>Francisco Armenta</b></sub></a><br /></td>
   </tr>
 <table>
