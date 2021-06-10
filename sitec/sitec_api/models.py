@@ -29,6 +29,10 @@ class SitecApi:
     KARDEX_URL = BASE_URL + 'wp-content/themes/fuente/base/ver_kardex.php?aluctr=0' 
     LOG_URL = BASE_URL + 'log/'
     LOGIN_URL = BASE_URL + 'wp-content/themes/fuente/base/validacion.php'
+    PROXIES = {
+        'http': "http://10.10.1.10:3128",
+        'https': "https://10.10.1.11:1080"
+    }
 
     is_connected = False
     headers = { 'User-Agent': 'Mozilla/5.0'}
@@ -37,6 +41,7 @@ class SitecApi:
         self.session = session
         if not session:
             self.session = requests.Session()
+            self.session.proxies.update(self.PROXIES)
             self.is_connected = True
         
     def login(self, **kwargs):
