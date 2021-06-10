@@ -17,10 +17,21 @@
             self.settings = $.extend({}, settings, $.fn.kardexManager.settingsDefaults)
             self.subjects = []
             self.semesters = []
+            self.filter = {
+                'semester': null,
+                'status': null,
+            }
             self.loadData()
-            self.semesterDropdown = self.find('.dropdown').dropdown({
+            self.semesterDropdown = self.find('.semester.dropdown').dropdown({
                 onChange: function(value){
-                    self.filterSubjectsBySemester(value)
+                    self.filter.semester = value
+                    self.updateFilter()
+                }
+            })
+            self.filterDropdown = self.find('.filter.dropdown').dropdown({
+                onChange: function(value){
+                    self.filter.status = value
+                    self.updateFilter()
                 }
             })
 
@@ -44,6 +55,7 @@
         }
 
         self.processData = function(data){
+            console.log(data)
             $.each(data, function(i, subject){
                 self.addSubject(self.Subject(subject))
                 self.semesters.push(subject.semester)
@@ -82,9 +94,15 @@
             })
         }
 
-        self.filterSubjectsBySemester = function(semester){
+        self.updateFilter = function(){
+            console.log(self.filter.semester == null)
+            console.log(self.filter.status == null)
             $.each(self.subjects, function(i, subject){
-                subject.toggle(subject.data.semester == semester)
+                subject.toggle((
+                    subject.data.semester == self.filter.semester || self.filter.semester == null
+                ) && (
+                    subject.data.status == self.filter.status || (self.filter.status == null || self.filter.status == '')
+                ))
             })
         }
 

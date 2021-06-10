@@ -20,8 +20,10 @@
             </div>
             {% if request.user.is_authenticated %}
             <div class="item right floated">
-                <i class="bars icon large clickable" style="color: #1e397c;" id="toggle-sidebar"></i>
-            </div>
+                <button class="ui icon white button" id="toggle-sidebar">
+                    <i class="content large icon"></i>
+                </button>
+              </div>
             {% endif %}
         </div>
         <div class="ui container">

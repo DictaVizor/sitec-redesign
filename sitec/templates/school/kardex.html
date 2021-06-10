@@ -10,11 +10,11 @@
 
 	<div class="ui container" id="kardex-manager">
 		<div class="ui segment center aligned">
-			<div class="ui action input">
-				<button class="ui icon prev button">
+			<div class="ui action input" id="semester-selection">
+				<button class="ui icon prev basic button">
 					<i class="angle left icon"></i>
 				</button>
-				<div class="ui selection dropdown">
+				<div class="ui selection semester compact dropdown">
 					<input type="hidden" name="Semestre">
 					<i class="dropdown icon"></i>
 					<div class="default text">Semestre</div>
@@ -22,10 +22,44 @@
 						
 					</div>
 				</div>
-				<button class="ui icon next button">
+				<button class="ui icon next basic button">
 					<i class="angle right icon"></i>
 				</button>
+				<div class="ui icon filter dropdown basic button">
+					<i class="filter icon"></i>
+					<div class="menu">
+						<div class="item" data-value="aprobada">
+							<div class="ui green empty circular label"></div>
+							Aprobadas
+						</div>
+						<div class="item" data-value="reprobada">
+							<div class="ui yellow empty circular label"></div>
+							Reprobada
+						</div>
+						<div class="item" data-value="pendiente">
+							<div class="ui gray empty circular label"></div>
+							Pendiente
+						</div>
+						<div class="item" data-value="sincursar">
+							<div class="ui olive empty circular label"></div>
+							Sin Cursar
+						</div>
+						<div class="item" data-value="normal">
+							<div class="ui white empty circular label"></div>
+							Normal
+						</div>
+						<div class="item" data-value="especial">
+							<div class="ui orange empty circular label"></div>
+							Especial
+						</div>
+						<div class="item" data-value="">
+							<div class="ui violet empty circular label"></div>
+							Sin filtro
+						</div>
+					</div>
+				</div>
 			</div>
+
 
 		</div>
 		<div class="ui subject basic segment no padding">

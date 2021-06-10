@@ -35,6 +35,11 @@ body.pushable > .pusher {
 	line-height: 1.5em;
 }
 
+.ui.white.button, .ui.white.buttons .button {
+	background-color: white;
+	color: black;
+}
+
 .double.massive.header {
 	font-size: 4em !important;
 }

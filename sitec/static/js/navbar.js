@@ -3,4 +3,10 @@ $(window).on('load', function(){
     $('#toggle-sidebar').on('click', function(){
         $('#sidebar').sidebar('toggle')
     })
+
+    $('#toggle-sidebar').visibility({
+        type: 'fixed',
+        offset: 15,
+        zIndex: 1001,
+    })
 })
