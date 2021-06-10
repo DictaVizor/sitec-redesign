@@ -41,7 +41,6 @@ class SitecApi:
         self.session = session
         if not session:
             self.session = requests.Session()
-            self.session.proxies.update(self.PROXIES)
             self.session.headers.update(self.HEADERS)
             self.is_connected = True
         
