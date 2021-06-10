@@ -111,12 +111,35 @@
         subjectTemplate: function(data){
             let segmentClass = COLORS[data.status]
 
-            return $(`
-                <div class="ui ${segmentClass} segment">
-                    <p> <strong>Materia: </strong> ${data.name}</p>
-                    <p> <strong>Codigo de Materia: </strong> ${data.slug}</p>
+            let segment = $(`
+                <div class="ui ${segmentClass} clickable segment">
+                    <h3 class="ui dividing header">
+                        ${data.name}
+                        <div class="sub header">
+                            ${data.slug}
+                        </div>
+                    </h3>
+                    <div class="ui inner basic segment">
+                    </div>
                 </div>
             `)
+            let innerSegment = segment.find('.inner.segment')
+            if('credits' in data){
+                innerSegment.append(`<p>Creditos: ${data.credits}</p>`)
+            }
+            if('score' in data){
+                innerSegment.append(`<p>Calificacion: ${data.score}</p>`)
+            }
+            if('tcs' in data){
+                innerSegment.append(`<p>TC: ${data.tc}</p>`)
+            }
+            if('period' in data){
+                innerSegment.append(`<p>Ciclo: ${data.period}</p>`)
+            }
+            if('taken_on' in data){
+                innerSegment.append(`<p>Creditos: ${data.taken_on}</p>`)
+            }
+            return segment
         },
         semesterDropdownOptionTemplate: function(number){
             return $(`

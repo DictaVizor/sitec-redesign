@@ -12,6 +12,7 @@ body.pushable > .pusher {
 	padding: 0 !important;
 }
 
+
 .sitec.dimmer {
 	background-color: rgba(30, 57, 124, 0.8);
 }
@@ -41,6 +42,18 @@ body.pushable > .pusher {
 span.ui.medium.text {
 	font-size: 1.2em;
 }
+
+.segment>.inner.segment {
+	background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.segment>.inner.segment {
+	color: white !important;
+}
+.segment:not(.inverted)>.inner.segment {
+	color: black !important;
+}
+
 
 /* Mobile menu */
 .mobile-menu {
@@ -80,6 +93,13 @@ span.ui.medium.text {
 
 .clickable {
 	cursor: pointer;
+}
+strong {
+	font-weight: bold;
+}
+
+.clickable:hover {
+	opacity: 0.8;
 }
 
 @media (max-width: 768px) {
