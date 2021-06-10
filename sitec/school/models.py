@@ -1,6 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class StudentSitecData(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    panel_data = models.TextField()
+    log_data = models.TextField()
+    reinscription_data = models.TextField()
+    cycle_advance_data = models.TextField()
+    kardex_data = models.TextField()
+    log_data = models.TextField()
+
+    @property
+    def owner(self):
+        return self.user
+
+
+
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     degree = models.CharField(max_length=255)
