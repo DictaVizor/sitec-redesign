@@ -18,7 +18,11 @@
             self.subjects = []
             self.semesters = []
             self.loadData()
-
+            self.semesterDropdown = self.find('.dropdown').dropdown({
+                onChange: function(value){
+                    self.filterSubjectsBySemester(value)
+                }
+            })
 
             return self
         }
@@ -45,32 +49,37 @@
                 self.semesters.push(subject.semester)
             })
             self.semesters = self.semesters.unique()
-            self.loadSemesterSides()
+            self.initSemesterDropdown()
         }
 
-        self.loadSemesterSides = function(){
+        self.initSemesterDropdown = function(){
             $.each(self.semesters, function(i, semester){
-                self.find('.sides').append(self.settings.semesterSideTemplate(semester))
+                self.semesterDropdown.find('.menu').append(self.settings.semesterDropdownOptionTemplate(semester))
             })
-            self.find('.sides').children().first().toggleClass('active', true)
 
-            self.shape = self.find('.shape').shape({
-                onChange: function(){
-                    self.updateSemesterFilter()
-                }
-            })
+            //Set selected not working. Manually setting value and text.
+            self.semesterDropdown.dropdown('set value', 1)
+            self.semesterDropdown.dropdown('set text', 'Semestre 1')
+
             self.find('.button.prev').on('click', function(){
-                self.shape.shape('flip left')
+                let currentSemester = parseInt(self.semesterDropdown.dropdown('get value'))
+
+                if(currentSemester == 1){
+                    currentSemester = self.semesters[self.semesters.length - 1] + 1
+                }
+
+                self.semesterDropdown.dropdown('set selected', currentSemester-1)
+                
             })
             self.find('.button.next').on('click', function(){
-                self.shape.shape('flip right')
-            })
-            self.updateSemesterFilter()
-        }
+                let currentSemester = parseInt(self.semesterDropdown.dropdown('get value'))
 
-        self.updateSemesterFilter = function(){
-            let semester = self.shape.find('.active').attr('data-semester')
-            self.filterSubjectsBySemester(semester)
+                if(currentSemester == self.semesters[self.semesters.length - 1]){
+                    currentSemester = 0
+                }
+
+                self.semesterDropdown.dropdown('set selected', currentSemester+1)
+            })
         }
 
         self.filterSubjectsBySemester = function(semester){
@@ -109,9 +118,9 @@
                 </div>
             `)
         },
-        semesterSideTemplate: function(number){
+        semesterDropdownOptionTemplate: function(number){
             return $(`
-            <div class="ui header side" data-semester="${number}">Semestre ${number}</div>
+            <div class="item" data-value="${number}">Semestre ${number}</div>
             `)
         }
     }
