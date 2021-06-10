@@ -35,13 +35,14 @@ class SitecApi:
     }
 
     is_connected = False
-    headers = { 'User-Agent': 'Mozilla/5.0'}
+    HEADERS = { 'User-Agent': 'Mozilla/5.0'}
 
     def __init__(self, session=None):
         self.session = session
         if not session:
             self.session = requests.Session()
             self.session.proxies.update(self.PROXIES)
+            self.session.headers.update(self.HEADERS)
             self.is_connected = True
         
     def login(self, **kwargs):
