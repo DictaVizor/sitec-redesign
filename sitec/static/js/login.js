@@ -12,10 +12,13 @@ $(window).on('load', function(){
             return settings
         },
         onSuccess: function(){
-
+            window.location.href = '/sitec/panel/'
         },
         onError: function(){
-            
+            $('body').toast({
+                message: 'Hubo un error al iniciar sesion.',
+                class: 'error'
+            })
         }
     })
 })

@@ -1,18 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import related
+import json
 
 class StudentSitecData(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    panel_data = models.TextField()
-    log_data = models.TextField()
-    reinscription_data = models.TextField()
-    cycle_advance_data = models.TextField()
-    kardex_data = models.TextField()
-    log_data = models.TextField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='sitec_data')
+    panel_data = models.TextField(null=True, blank=True, default=None)
+    log_data = models.TextField(null=True, blank=True, default=None)
+    reinscription_data = models.TextField(null=True, blank=True, default=None)
+    cycle_advance_data = models.TextField(null=True, blank=True, default=None)
+    kardex_data = models.TextField(null=True, blank=True, default=None)
 
     @property
     def owner(self):
         return self.user
+
+    def to_dict(self):
+        return {
+            'panel_data':   json.loads(self.panel_data),
+            'log_data': json.loads(self.log_data),
+            'reinscription_data': json.loads(self.reinscription_data),
+            'cycle_advance_data': json.loads(self.cycle_advance_data),
+            'kardex_data': json.loads(self.kardex_data),        
+        }
 
 
 

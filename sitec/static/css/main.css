@@ -78,6 +78,10 @@ span.ui.medium.text {
 	color: #fff;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 @media (max-width: 768px) {
 	.welcome.segment {
 		height: 100%;

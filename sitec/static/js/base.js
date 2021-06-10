@@ -14,7 +14,10 @@ $(window).on('load', function(){
 
         },
         onError: function(){
-
+            $('body').toast({
+                message: 'Hubo un error al sincronizar los datos. Por favor, intenta de nuevo mas tarde.',
+                class: 'error'
+            })
         }
     })
     let sitecModal = $('.sync.sitec.modal').modal({

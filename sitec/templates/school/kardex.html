@@ -1,23 +1,34 @@
-{% extends 'school/base.html' %} {% block content %}
+{% extends 'school/base.html' %} 
 
+{% load static %}
+
+{% block content %}
 <div class="kardex-container">
-	<div class="ui container center aligned">
-		<h1>Kárdex</h1>
-	</div>
-	<div class="ui container segment center aligned">
-		<i class="angle left icon"></i>
-		<span class="ui text large" style="margin: 0 40px">Semestre 6</span>
-		<i class="angle right icon"></i>
-	</div>
-	<div class="ui container center aligned">
-		<div class="ui segment" style="background-color: #ffb27a">
-			<p><span style="font-weight: bold">Materia: </span><span>Ingeniería de Software</span></p>
-			<p><span style="font-weight: bold">Código de materia: </span><span>SCD-1011</span></p>
+	<h1 class="ui header center aligned">
+		Kardex
+	</h1>
+
+	<div class="ui container center aligned" id="kardex-manager">
+		<div class="ui segment center aligned">
+			<button class="ui icon mini prev button">
+				<i class="angle left icon"></i>
+			</button>
+			<div class="ui text shape">
+				<div class="sides">
+	
+				</div>
+			</div>
+			<button class="ui icon mini next button">
+				<i class="angle right icon"></i>
+			</button>
 		</div>
-		<div class="ui segment" style="background-color: #c3f1b8">
-			<p><span style="font-weight: bold">Materia: </span><span>Taller de Sistemas Operativos</span></p>
-			<p><span style="font-weight: bold">Código de materia: </span><span>SCA-1026</span></p>
+		<div class="ui subject basic segment no padding">
+
 		</div>
 	</div>
 </div>
+
+<script src="{% static 'js/kardexManager.js' %}"></script>
+<script src="{% static 'js/kardex.js' %}"></script>
+
 {% endblock %}

@@ -8,9 +8,22 @@
     {% include 'school/references.html' %}
 </head>
 <body class="pushable">
+    {% include 'school/navbar.html' %}
     <div class="pusher">
-        {% include 'school/navbar.html' %}
-
+        <div class="ui main borderless menu">
+            <div class="item">
+                <img
+                    src="https://sitec.tijuana.tecnm.mx/wp-content/themes/fuente/images/LogoTNM.png"
+                    alt=""
+                    class="ui small image"
+                />
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="item right floated">
+                <i class="bars icon large clickable" style="color: #1e397c;" id="toggle-sidebar"></i>
+            </div>
+            {% endif %}
+        </div>
         <div class="ui container">
             {% block content %}
             {% endblock %}

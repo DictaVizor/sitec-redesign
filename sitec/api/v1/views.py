@@ -1,3 +1,5 @@
+from rest_framework.permissions import IsAuthenticated
+from school.models import StudentSitecData
 import rest_framework
 from rest_registration.api.views import login as rest_login
 from rest_framework.decorators import api_view, permission_classes
@@ -6,7 +8,10 @@ from sitec_api.models import SitecApi
 from rest_framework.response import Response
 from rest_framework import status
 from .permissions import IsOwner
+from .serializers import StudentSitecDataSerializer
 from django.contrib.auth.models import User
+from rest_framework import viewsets
+import json
 
 @api_view(['POST'])
 def sync_sitec(request):
@@ -17,14 +22,31 @@ def sync_sitec(request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     data = api.retrieve_all_data()
+    print(data['kardex_data'])
+    for key,value in data.items():
+        data[key] = json.dumps(value)
 
     user = None
     try:
-        user = User.objecs.get(username=request.data['username'])
+        user = User.objects.get(username=request.data['username'])
     except Exception:
         pass
 
     if not user:
         user = User.objects.create_user(request.data['username'], password=request.data['password'])
+    
+    student_sitec_data, created = StudentSitecData.objects.get_or_create(user=user)
+    student_sitec_data_serializer = StudentSitecDataSerializer(student_sitec_data, data=data, partial=True)
+    student_sitec_data_serializer.is_valid(raise_exception=True)
+    student_sitec_data_serializer.save()
+    return Response(status=status.HTTP_200_OK, data=student_sitec_data_serializer.data)
 
-    return Response(status=status.HTTP_200_OK, data=data)
+
+class StudentSitecDataViewSet(viewsets.ModelViewSet):
+    queryset = StudentSitecData.objects.all()
+    serializer_class = StudentSitecDataSerializer
+    permission_classes = [IsOwner|IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)

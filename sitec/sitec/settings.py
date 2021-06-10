@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'school',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_REGISTRATION = {
+    'PROFILE_SERIALIZER_CLASS': 'api.v1.serializers.UserProfileSerializer',
+}
