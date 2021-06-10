@@ -14,7 +14,6 @@ $(window).on('load', function(){
             window.location.href = '/sitec/panel/'
         },
         onError: function(){
-            console.log("asdasd")
             $('body').toast({
                 message: 'Hubo un error al iniciar sesion.',
                 class: 'error'
@@ -22,5 +21,10 @@ $(window).on('load', function(){
         },
         onComplete: function(response, element, xhr){
         }
+    })
+
+
+    $('#login-button').on('click', function(){
+        loginForm.form('submit')
     })
 })
