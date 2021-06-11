@@ -11,7 +11,7 @@ $(window).on('load', function(){
             return settings
         },
         onSuccess: function(){
-
+            window.location.href = '/sitec/panel/'
         },
         onError: function(){
             $('body').toast({

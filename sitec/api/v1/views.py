@@ -1,7 +1,7 @@
 from rest_framework.permissions import IsAuthenticated
 from school.models import StudentSitecData
 import rest_framework
-from rest_registration.api.views import login as rest_login
+from rest_registration.api.views.login import perform_login
 from rest_framework.decorators import api_view, permission_classes
 from rest_registration.exceptions import UserNotFound
 from sitec_api.models import SitecApi   
@@ -22,7 +22,6 @@ def sync_sitec(request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     data = api.retrieve_all_data()
-    print(data['kardex_data'])
     for key,value in data.items():
         data[key] = json.dumps(value)
 
@@ -39,6 +38,9 @@ def sync_sitec(request):
     student_sitec_data_serializer = StudentSitecDataSerializer(student_sitec_data, data=data, partial=True)
     student_sitec_data_serializer.is_valid(raise_exception=True)
     student_sitec_data_serializer.save()
+
+    perform_login(request._request, user)
+
     return Response(status=status.HTTP_200_OK, data=student_sitec_data_serializer.data)
 
 
