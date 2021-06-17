@@ -1,5 +1,19 @@
 {% extends 'school/base.html' %}
+{% load static %}
+
 
 {% block content %}
 
+    <div class="ui clearing segment" id="student-data-container">
+        <button class="ui basic right floated button" id="export-scores"><i class="download icon"></i>Calificaciones</button>
+        <button class="ui basic right floated button" id="export-schedule"><i class="download icon"></i>Horario</button>
+    </div>
+
+    <div id="cycle-advance-container">
+
+    </div>
+
+
+
+<script src="{% static 'js/cycleAdvance.js' %}"></script>
 {% endblock %}

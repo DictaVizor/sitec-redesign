@@ -12,6 +12,18 @@ body.pushable > .pusher {
 	padding: 0 !important;
 }
 
+.ui.white.label {
+	background-color: white;
+}
+
+.scores>.column, .misses>.column {
+	padding-left: 0.1rem !important;
+	padding-right: 0.1rem !important;
+}
+
+.no.margin {
+	margin: 0 !important;
+}
 
 .sitec.dimmer {
 	background-color: rgba(30, 57, 124, 0.8);
@@ -48,11 +60,15 @@ span.ui.medium.text {
 	font-size: 1.2em;
 }
 
-.segment>.inner.segment {
+.segment .inner.segment {
 	background: rgba(0, 0, 0, 0.1) !important;
 }
 
-.segment>.inner.segment {
+.ui.white.text {
+	color: white;
+}
+
+.segment .inner.segment {
 	color: white !important;
 }
 .segment:not(.inverted)>.inner.segment {

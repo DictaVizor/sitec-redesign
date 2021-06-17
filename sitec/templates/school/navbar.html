@@ -2,6 +2,20 @@
 
 
 <div class="ui right vertical sidebar menu" id="sidebar">
+
+	<div class="item">
+		<div class="ui segment">
+		<div class="ui header">
+			<div class="content">
+				<span id="student-name"></span>
+				<div class="sub header" id="control-number"></div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+
+
 	<a href="{% url 'school:panel' %}" class="item active"><i class="user circle outline icon"></i> Mi Panel</a>
 	<a href="{% url 'school:panel' %}" class="item"><i class="lock icon"></i> Cambiar Clave</a>
 	<a href="{% url 'school:panel' %}" class="item"><i class="envelope outline icon"></i> Cambiar Email</a>

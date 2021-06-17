@@ -73,6 +73,18 @@ class SitecApi:
         soup = BeautifulSoup(html, 'html.parser')
         personal_information_html = soup.find_all('div', class_='student-school-info-escolar')[0]
         personal_information = {}
+
+        student_name = soup.select('.student-name')[0]
+        print(student_name)
+        personal_information['control_number'] = student_name.span.string.replace('(', '').replace(')', '')
+
+        if student_name.span:
+            student_name.span.decompose()
+        if student_name.br:
+            student_name.br.decompose()
+
+        personal_information['name'] = student_name.text.strip().title()
+
         for div in personal_information_html.find_all('div'):
             name = div.get('class')[0]
             title = div.find('strong').text
@@ -96,6 +108,7 @@ class SitecApi:
         for grouped_table in grouped_tables:
             subject_data = {'schedules': [] , 'units': []}
             subject_data['title'] = grouped_table[0].find_all('tr')[0].find_all('td')[1].string
+            subject_data['name'] = grouped_table[0].find_all('tr')[1].find_all('td')[1].string
 
             day_count = 1
             for day_td in grouped_table[1].find_all('tr')[1].find_all('td'):

@@ -10,8 +10,8 @@ app_name = 'api-v1'
 urlpatterns = router.urls
 
 urlpatterns += [
-    path('accounts/login', login, name='login'),
-    path('accounts/logout', logout, name='logout'),
-    path('accounts/profile', profile, name='profile'),
-    path('sync-sitec', sync_sitec, name='sync-sitec')
+    path('accounts/login/', login, name='login'),
+    path('accounts/logout/', logout, name='logout'),
+    path('accounts/profile/', profile, name='profile'),
+    path('sync-sitec/', sync_sitec, name='sync-sitec')
 ]
