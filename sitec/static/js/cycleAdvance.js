@@ -151,7 +151,7 @@ $(window).on('load', function(){
         doc.setFontSize(22)
         doc.text('Avance del ciclo', 20, 130)
         doc.setFontSize(16)
-        doc.text(panelData.name, 20, 150)
+        doc.text(panelData.name||'Sin nombre', 20, 150)
         doc.text(`${panelData.control_number} - ${panelData['current-period'].value}`, 20, 170)
         doc.setFontSize(11)
         doc.text(doc.splitTextToSize('A continuación se muestran las materias que fueron cargadas y las evaluaciones correspondientes por unidades para el presente ciclo. La columna REP indica si la materia fue cargada por reprobación o curso espacial. U01 indica la calificación para la unidad 1 de la materia y así sucesivamente. Opción es el tipo de evaluación de la unidad NP: No Presentó, ORD: Ordinario/Normal, REG: Regularización y EXT: Extraordinario. Prom Est es el promedio estimado en la materia para el alumno y solo el que se muestra en el Kardex es el definitivo. Si existe alguna duda sobre la presente información verifícalo con el maestro o el coordinador de carrera.', 550), 20, 190)
