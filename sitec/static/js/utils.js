@@ -41,3 +41,14 @@ Array.prototype.unique = function() {
   }
   return arr;
 }
+
+
+String.prototype.utf8_to_b64 = function() {
+  return window.btoa(unescape(encodeURIComponent(this)));
+}
+
+String.prototype.b64_to_utf8 = function() {
+  return decodeURIComponent(escape(window.atob(this)));
+}
+
+const { jsPDF } = window.jspdf;

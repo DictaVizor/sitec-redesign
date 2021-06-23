@@ -1,5 +1,6 @@
 $(window).on('load', function(){
     let subjectData
+    let panelData
     //Subject units 8 max??
     const NUMBER_CLASS_NAME = {
         1: 'one',
@@ -31,6 +32,8 @@ $(window).on('load', function(){
         beforeXHR: suiSetRequestHeaders,
         onSuccess: function(response){
             subjectData = response.sitec_data.cycle_advance_data
+            panelData = response.sitec_data.panel_data
+            console.log(response.sitec_data.kardex_data)
             let studentData = response.sitec_data.panel_data
             $.each(subjectData, function(i, subject){
                 let _subject = subjectTemplate(subject)
@@ -128,7 +131,41 @@ $(window).on('load', function(){
     }
 
     function exportScores(){
-        console.log('Export scores!')
+        let columns = [['Materia', 'Docente', 'U1', 'U2', 'U3', 'U4', 'U5', 'U6']]
+        let rows = []
+        $.each(subjectData, function(i, subject){
+            let rowData = [
+                subject.name  + ' - ' + subject.title.split('–')[0],
+                subject.title.split('–')[1].replace('�', 'Ñ')
+            ]
+
+
+
+            $.each(subject.units, function(i, unit){
+                rowData.push(100)
+            })
+            rows.push(rowData)
+        })
+        var doc = new jsPDF('p', 'pt')
+        doc.addImage(logos, 0, 10)
+        doc.setFontSize(22)
+        doc.text('Avance del ciclo', 20, 130)
+        doc.setFontSize(16)
+        doc.text(panelData.name, 20, 150)
+        doc.text(`${panelData.control_number} - ${panelData['current-period'].value}`, 20, 170)
+        doc.setFontSize(11)
+        doc.text(doc.splitTextToSize('A continuación se muestran las materias que fueron cargadas y las evaluaciones correspondientes por unidades para el presente ciclo. La columna REP indica si la materia fue cargada por reprobación o curso espacial. U01 indica la calificación para la unidad 1 de la materia y así sucesivamente. Opción es el tipo de evaluación de la unidad NP: No Presentó, ORD: Ordinario/Normal, REG: Regularización y EXT: Extraordinario. Prom Est es el promedio estimado en la materia para el alumno y solo el que se muestra en el Kardex es el definitivo. Si existe alguna duda sobre la presente información verifícalo con el maestro o el coordinador de carrera.', 550), 20, 190)
+        doc.autoTable({
+            theme: 'grid',
+            headStyles: { fillColor: [0,123,255] },
+            head: columns,
+            body: rows,
+            margin: {
+                top: 280,
+                left: 20,
+            }
+        })
+        doc.save('calificaciones.pdf')
     }
 
 })

@@ -12,6 +12,7 @@ from .serializers import StudentSitecDataSerializer
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 import json
+from sitec_api.utils import clean_spanish_characters
 
 @api_view(['POST'])
 def sync_sitec(request):
@@ -23,7 +24,7 @@ def sync_sitec(request):
 
     data = api.retrieve_all_data()
     for key,value in data.items():
-        data[key] = json.dumps(value)
+        data[key] = clean_spanish_characters(json.dumps(value))
 
     user = None
     try:
