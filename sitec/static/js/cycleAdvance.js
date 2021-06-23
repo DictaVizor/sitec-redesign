@@ -142,7 +142,7 @@ $(window).on('load', function(){
 
 
             $.each(subject.units, function(i, unit){
-                rowData.push(100)
+                rowData.push(unit.score)
             })
             rows.push(rowData)
         })
