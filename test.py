@@ -5,4 +5,4 @@ api = SitecApi()
 # api.login('18212170', 'jajatujefa42')
 api.is_connected = True
 
-print(api.retrieve_panel_data())
+print(api.retrieve_cycle_advance_data())

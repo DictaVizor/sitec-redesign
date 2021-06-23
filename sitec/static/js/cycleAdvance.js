@@ -33,9 +33,11 @@ $(window).on('load', function(){
         onSuccess: function(response){
             subjectData = response.sitec_data.cycle_advance_data
             panelData = response.sitec_data.panel_data
-            console.log(response.sitec_data.kardex_data)
             let studentData = response.sitec_data.panel_data
             $.each(subjectData, function(i, subject){
+                if(subject == null){
+                    return
+                }
                 let _subject = subjectTemplate(subject)
                 cycleAdvanceContainer.append(_subject)
             })
