@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^w)lf%byosvqct#z(el%yxb+(kb^uc@l-yfsj%*iv35r2i)n6p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-89-245-27.compute-1.amazonaws.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['549582757d9d.ngrok.io', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -138,3 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_REGISTRATION = {
     'PROFILE_SERIALIZER_CLASS': 'api.v1.serializers.UserProfileSerializer',
 }
+
+from django.urls import reverse_lazy
+
+LOGIN_URL = reverse_lazy('school:login')
